@@ -6,6 +6,17 @@ This workflow transforms non-coders into effective application builders through 
 
 **Core Innovation:** Systematic progression through PRD → Production-Aware Roadmap → Incremental Versions → Production Validation, with AI doing the coding while you make product decisions.
 
+### PVDD Loop
+
+Every version follows the **PVDD Loop** - a four-phase cycle that ensures quality through validation at each stage:
+
+- **Plan:** Create Zen Plan from Mission Order, confirm scope/dependencies/constraints
+- **Verify:** ChatGPT validates technical approach before any code is written
+- **Develop:** Implement features, write tests, run automated UAT
+- **Deploy:** Complete user UAT, generate Status Report, mark version complete
+
+This loop prevents the common failure mode of "code first, validate later" by inserting approval gates between each phase.
+
 ---
 
 ## The Complete Process Flow
@@ -71,7 +82,19 @@ git init
 git checkout -b main
 ```
 
-**4. Initialize with Claude Code (optional):**
+**4. Add .gitignore:**
+```bash
+# Copy from vibe-coding-workflow repository
+cp /path/to/vibe-coding-workflow/.gitignore .gitignore
+
+# Review customization options
+# See gitignore-template.md for guidance on:
+# - Lock files (commit vs ignore)
+# - Version-specific docs (preserve vs ignore)
+# - Project-specific patterns
+```
+
+**5. Initialize with Claude Code (optional):****
 ```bash
 npx claude-flow@alpha hive-mind spawn \
   "Initialize project structure and setup" \
@@ -100,7 +123,7 @@ Define what you're building and break it into achievable versions with productio
 
 ### Step 1.1: Create PRD
 
-**Tool:** `prd-template.md` + ChatGPT
+**Tool:** `prd-template.md` + ChatGPT (or LLM of choice)
 
 **Process:**
 1. Open `prd-template.md`
@@ -120,7 +143,7 @@ Define what you're building and break it into achievable versions with productio
 **Tools:** 
 - `roadmap-template.md`
 - `production-readiness-checklist.md`
-- ChatGPT
+- ChatGPT (or LLM of choice)
 
 **Process:**
 1. Upload ALL THREE documents to ChatGPT:
@@ -181,7 +204,7 @@ Repeat this phase for each version (v0.1, v0.2, ... v1.0). Each iteration delive
 
 ### Step 2.1: Create Mission Order
 
-**Tool:** `mission-order-standard.md` + ChatGPT
+**Tool:** `mission-order-standard.md` + ChatGPT (or LLM of choice)
 
 **Process:**
 1. Upload `docs/roadmap.md` and `mission-order-standard.md` to ChatGPT
@@ -377,6 +400,31 @@ Because production standards were reviewed in Phase 1 and built incrementally ac
 ---
 
 ## Tool Roles
+
+### Strategic Validation LLM
+
+**This workflow uses ChatGPT in examples, but any capable LLM can fill this role.**
+
+**Requirements for substitution:**
+- Strong reasoning and planning capabilities
+- Can process long documents (10,000+ tokens: PRD, roadmap, mission orders)
+- Good at asking clarifying questions
+- Able to validate technical approaches
+- Conversational interface for iterative refinement
+
+**Tested and recommended alternatives:**
+- **Claude 3.5 Sonnet or Opus** - Excellent for technical validation, longer context windows
+- **GPT-4 or GPT-4 Turbo** - Original tested tool, strong reasoning
+- **Gemini Advanced** - Good for planning and analysis
+
+**Not recommended:**
+- Smaller models (GPT-3.5, Claude Instant) - Insufficient reasoning depth for production-aware roadmaps
+- Code-only models - Not designed for strategic thinking
+- Fine-tuned code assistants - Optimized for different use case
+
+**In this documentation:** "ChatGPT" is used consistently in examples for clarity, but you may substitute any LLM meeting the above requirements.
+
+---
 
 ### You (The Developer)
 **Responsibilities:**

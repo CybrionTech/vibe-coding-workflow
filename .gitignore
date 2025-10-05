@@ -1,56 +1,301 @@
-# OS-specific cruft
+# ============================================
+# Vibe Coding Workflow - .gitignore Template
+# ============================================
+# Use this as starting point for all projects.
+# Covers: OS files, languages, IDEs, secrets, 
+# build artifacts, and Claude Flow coordination.
+# ============================================
+
+# ============================================
+# OS-Specific Files
+# ============================================
+# macOS
 .DS_Store
 .AppleDouble
 .LSOverride
+._*
 Icon?
-Thumbs.db
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
 
-# System folders
+# Windows
+Thumbs.db
 ehthumbs.db
 Desktop.ini
+$RECYCLE.BIN/
+*.stackdump
 
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.egg-info/
-*.egg
+# Linux
+*~
+.directory
+.Trash-*
+
+# ============================================
+# Environment & Secrets (CRITICAL)
+# ============================================
 .env
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+credentials/
+.secrets
+config/secrets.json
+
+# ============================================
+# Python
+# ============================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
 .venv/
 venv/
+ENV/
+env/
+virtualenv/
 
-# Node.js
+# ============================================
+# Node.js / JavaScript
+# ============================================
 node_modules/
+jspm_packages/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+lerna-debug.log*
+.pnp.*
+.npm
+.eslintcache
+.node_repl_history
+.yarn-integrity
 
-# IDE/editor junk
+# ============================================
+# IDE / Editors
+# ============================================
+# VS Code
 .vscode/
+.vscode-test/
+*.code-workspace
+
+# JetBrains (WebStorm, PyCharm, etc.)
 .idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
 *.swp
 *.swo
+*.swn
+*~
+.*.sw?
 
-# Build artifacts
+# Emacs
+*~
+\#*\#
+.#*
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# ============================================
+# Build Artifacts & Compiled Files
+# ============================================
 dist/
 build/
 *.log
-
-# Environment files
-.env
-*.local
-
-# Coverage / testing
-.coverage
+*.out
+*.class
+*.jar
+*.war
+*.ear
+target/
+.next/
+.nuxt/
 .cache/
+.parcel-cache/
+.turbo/
+
+# ============================================
+# Testing & Coverage
+# ============================================
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+.pytest_cache/
 nosetests.xml
 coverage.xml
 *.cover
 *.py,cover
+test-results/
+junit.xml
+.karma/
 
-# Miscellaneous
-*.bak
+# ============================================
+# Documentation Build Files
+# ============================================
+_build/
+.doctrees/
+site/
+docs/_build/
+
+# ============================================
+# Database Files
+# ============================================
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# ============================================
+# Logs
+# ============================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+
+# ============================================
+# Temporary Files
+# ============================================
 *.tmp
-*.lock
+*.temp
+*.bak
+*.swp
+*.swo
+tmp/
+temp/
+
+# ============================================
+# Lock Files (IMPORTANT: Comment out if needed)
+# ============================================
+# Uncomment these if you want to ignore lock files
+# WARNING: This can cause dependency version mismatches
+# Only ignore if you have a specific reason
+# package-lock.json
+# yarn.lock
+# Pipfile.lock
+# poetry.lock
+
+# ============================================
+# Claude Flow & AI Coordination Files
+# ============================================
+# Claude Flow state and coordination
+.swarm/
+.hive-mind/
+.claude-flow/
+
+# Memory and session data
+memory/claude-flow-data.json
+memory/sessions/
+memory/agents/
+memory/tasks/
+
+# Coordination artifacts
+coordination/memory_bank/
+coordination/subtasks/
+coordination/orchestration/
+coordination/agent_handoffs/
+
+# Metrics and monitoring
+.claude-flow/metrics/
+metrics/agent_performance/
+
+# Agent-specific workspaces (if isolated)
+agents/*/workspace/
+agents/*/cache/
+
+# ============================================
+# Claude Code Generated Files
+# ============================================
+.claude/
+.claude/settings.local.json
+.claude/sessions/
+.claude/cache/
+
+# ============================================
+# Project-Specific (Vibe Coding Workflow)
+# ============================================
+# Version-specific generated files
+docs/versions/*/zen-plan.md
+docs/versions/*/uat-automated.md
+docs/versions/*/uat-user.md
+docs/versions/*/status-report.md
+
+# Auto-generated lessons learned (keep template)
+# Uncomment if lessons-learned.md is auto-generated
+# docs/lessons-learned.md
+
+# Archive directory (only if you want to exclude it)
+# docs/archive/
+
+# ============================================
+# Optional: Large Files / Assets
+# ============================================
+# Uncomment if your project has large assets
+# *.mp4
+# *.mov
+# *.avi
+# *.psd
+# *.ai
+# *.sketch
+# assets/large/
+
+# ============================================
+# Optional: Sensitive Data Directories
+# ============================================
+# Uncomment if you have these directories
+# data/raw/
+# data/sensitive/
+# backups/
+# exports/
+
+# ============================================
+# END OF TEMPLATE
+# ============================================

@@ -6,7 +6,12 @@ A systematic development workflow designed for non-coders building applications 
 
 This workflow enables solo developers with infrastructure/application knowledge (but limited coding experience) to build production-quality software through structured collaboration with AI agents.
 
-**Start Here:** Read [workflow-overview.md](workflow-overview.md) to understand the complete process.
+> **Note on AI Tools:** This workflow uses **ChatGPT** in examples for strategic validation and **Claude Code** for implementation. ChatGPT can be substituted with any capable LLM (Claude 3.5 Sonnet/Opus, GPT-4, Gemini Advanced). See [workflow-overview.md](workflow-overview.md#strategic-validation-llm) for LLM requirements and alternatives.
+
+**Start Here:** 
+- **New to this workflow?** See [quick-start-guide.md](quick-start-guide.md) *(coming soon - tiny tutorial project)*
+- **Ready to build?** Read [workflow-overview.md](workflow-overview.md) to understand the complete process
+- **Need tools?** Check [tooling-prerequisites.md](tooling-prerequisites.md) for setup requirements *(coming soon)*
 
 ---
 
@@ -14,7 +19,12 @@ This workflow enables solo developers with infrastructure/application knowledge 
 
 ### You Interact With These (5 + README)
 
-**1. [workflow-overview.md](workflow-overview.md)** - **START HERE**
+**0. [quick-start-guide.md](quick-start-guide.md)** - **START HERE IF NEW** *(coming soon)*
+- 2-3 hour tutorial building a tiny project
+- Learn workflow before tackling real projects
+- Hands-on experience with all phases
+
+**1. [workflow-overview.md](workflow-overview.md)** - **COMPLETE REFERENCE**
 - The complete process from idea to production
 - Phase-by-phase breakdown
 - Tool roles and approval gates
@@ -38,26 +48,38 @@ This workflow enables solo developers with infrastructure/application knowledge 
 
 ### Agents Reference These (3)
 
+**Note:** See [tooling-prerequisites.md](tooling-prerequisites.md) for tool setup and requirements *(coming soon)*
+
 **6. [technical-handbook.md](technical-handbook.md)**
 - Technical implementation details
 - Git workflow, dependency management
 - Agents read this, you rarely need to
 
-**7. [lessons-learned-template.md](lessons-learned-template.md)**
+**7. [gitignore-template.md](gitignore-template.md)**
+- .gitignore template and customization guide
+- Security best practices
+- Project-specific patterns
+
+**8. [lessons-learned-template.md](lessons-learned-template.md)**
 - Structure for ongoing learning log
 
-**8. [status-report-template.md](status-report-template.md)**
+**9. [status-report-template.md](status-report-template.md)**
 - Structure for version completion docs
 
 ---
 
 ## Quick Start
 
+**Option A: Learn by doing** *(recommended for first-timers)*
+1. Follow [quick-start-guide.md](quick-start-guide.md) to build a tiny tutorial project *(coming soon)*
+2. Then apply the workflow to your real project
+
+**Option B: Jump straight in** *(if you learn by reading)*
 1. Read **[workflow-overview.md](workflow-overview.md)** - understand the process
-2. Create PRD using `prd-template.md` + ChatGPT
-3. Create Production-Aware Roadmap using `roadmap-template.md` + `production-readiness-checklist.md` + ChatGPT
+2. Create PRD using `prd-template.md` + your chosen LLM (ChatGPT, Claude, etc.)
+3. Create Production-Aware Roadmap using `roadmap-template.md` + `production-readiness-checklist.md` + your LLM
 5. For each version:
-   - Create Mission Order using `mission-order-standard.md` + ChatGPT
+   - Create Mission Order using `mission-order-standard.md` + your LLM
    - Pass to Claude Code
    - Execute UAT
    - Mark complete
