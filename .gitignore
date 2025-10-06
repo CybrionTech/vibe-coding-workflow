@@ -267,13 +267,14 @@ docs/versions/*/zen-plan.md
 docs/versions/*/uat-automated.md
 docs/versions/*/uat-user.md
 docs/versions/*/status-report.md
+archive/
 
 # Auto-generated lessons learned (keep template)
 # Uncomment if lessons-learned.md is auto-generated
 # docs/lessons-learned.md
 
 # Archive directory (only if you want to exclude it)
-# docs/archive/
+docs/archive/
 
 # ============================================
 # Optional: Large Files / Assets
