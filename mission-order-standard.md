@@ -99,6 +99,36 @@ Each Mission Order **must** include the following sections (in this order):
     - DoD-Z: Button click handlers registered
     - DoD-N: No console errors on page load
 
+   ## Testing Requirements
+
+   All versions must include automated tests that prove DoD completion.
+
+   ### Test Types Required
+   - **Unit Tests:** Test individual functions/classes in isolation
+   - **Integration Tests:** Test actual code against actual dependencies
+   - **DoD Validation Tests:** At least one test per DoD item that proves compliance
+
+   ### Test Execution
+   - Tests must import actual source code (not mocks)
+   - Tests must run against implemented code
+   - Tests must fail before implementation (Red phase)
+   - Tests must pass after implementation (Green phase)
+
+   ### Coverage Requirements
+   - Minimum 80% code coverage required for DoD completion
+   - Coverage report must be generated and included in Status Report
+   - Uncovered code must be justified (e.g., platform-specific stubs)
+
+   ### DoD-to-Test Mapping
+   Each DoD item must list:
+   - Which test file proves it
+   - Which test function(s) validate it
+   - What the test asserts
+
+   **Example:**
+   DoD-1: Config loads from ~/.config/netmon/config.yaml
+   Evidence: tests/test_config.py::test_config_loads_from_xdg_path (line 45)
+
 11. **Git Commit Directives**
     - **Commit Strategy:** [single | per-objective | milestone]
     - **Branch Pattern:** `feature/{version}/{brief-name}`
