@@ -213,9 +213,29 @@ If substantial changes are needed to UAT playbooks during execution:
 ---
 
 ## PVDD Loop (enforced)
+
 - **Plan:** Draft Zen Plan (auto-generated), confirm scope/deps/constraints; share Mission Order + Zen Plan with ChatGPT.
+
 - **Verify:** Validate design/approach against Mission Order and DoD; adjust before coding.
-- **Develop:** Implement features, tests, and docs as per Execution Tasks; **ChatGPT validates completed code** before UAT.
+
+- **Develop:** Implement features, tests, and docs as per Execution Tasks.
+  - Write tests first (TDD: Red phase - tests fail)
+  - Implement code to pass tests (Green phase)
+  - Run tests against implementation
+  - Generate coverage report (minimum 80%)
+
+- **Validate:** Integration validation before UAT
+  - Run all tests against implemented code
+  - Verify coverage meets minimum (80%)
+  - Map each DoD item to passing test (include in Status Report)
+  - ChatGPT validates completed code:
+    - Router registration in backend
+    - Component imports in frontend
+    - Event handler wiring
+    - Environment configuration (no hardcoded secrets)
+    - Common integration mistakes
+  - Fix any issues before proceeding to Deploy
+
 - **Deploy:** Run automated UAT, obtain user approval on user UAT (if applicable), publish Status Report, and finalize Lessons Learned.
 
 ---

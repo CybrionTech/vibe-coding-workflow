@@ -8,14 +8,15 @@ This workflow transforms non-coders into effective application builders through 
 
 ### PVDD Loop
 
-Every version follows the **PVDD Loop** - a four-phase cycle that ensures quality through validation at each stage:
+Every version follows the **PVDD Loop** - a five-phase cycle that ensures quality through validation at each stage:
 
 - **Plan:** Create Zen Plan from Mission Order, confirm scope/dependencies/constraints
 - **Verify:** ChatGPT validates technical approach before any code is written
-- **Develop:** Implement features, write tests, run automated UAT
+- **Develop:** Implement features using TDD (Red-Green cycle), write tests first, then code
+- **Validate:** Integration testing phase - run all tests, verify coverage (80%), map DoD to tests, ChatGPT code review
 - **Deploy:** Complete user UAT, generate Status Report, mark version complete
 
-This loop prevents the common failure mode of "code first, validate later" by inserting approval gates between each phase.
+This loop prevents the common failure mode of "code first, validate later" by inserting multiple approval gates between each phase.
 
 ---
 
@@ -246,13 +247,14 @@ git commit -m "[vX.X] docs: Add mission order"
 
 ---
 
-### Step 2.3: Implementation (Automated)
+### Step 2.3: Development (Automated)
 
 **Who:** Claude Code + hive-mind agents
 
 **What They Do:**
+- Write tests first (TDD Red phase - tests fail)
 - Implement features per Execution Tasks
-- Write unit and integration tests
+- Run tests against implementation (Green phase)
 - Create documentation
 - Follow efficiency patterns (batching, concurrency)
 - Commit code per git directives
@@ -263,24 +265,45 @@ git commit -m "[vX.X] docs: Add mission order"
 
 ---
 
-### Step 2.4: Code Validation (Automated)
+### Step 2.4: Validation Phase (Automated)
 
-**Who:** ChatGPT via Zen MCP
+**Who:** Claude Code agents + ChatGPT via Zen MCP
 
-**What It Checks:**
-- Router registration (routes actually exist)
-- Component imports (files actually imported)
-- Event handlers (buttons actually wired)
-- Environment configuration (no hardcoded secrets)
-- Common integration mistakes
+**What Happens:**
+1. **Test Execution:**
+   - Run all tests against implemented code
+   - Generate coverage report (must meet 80% minimum)
+   - Verify all tests pass
 
-**If GUI in scope, automated UAT checks:**
+2. **DoD Mapping:**
+   - Map each DoD item to specific test(s) that prove it
+   - Document test file, function name, line number for each DoD
+   - Include in Status Report as evidence
+
+3. **ChatGPT Code Review:**
+   - Router registration (routes actually exist)
+   - Component imports (files actually imported)
+   - Event handlers (buttons actually wired)
+   - Environment configuration (no hardcoded secrets)
+   - Common integration mistakes
+
+4. **Issue Resolution:**
+   - Fix any failing tests
+   - Address coverage gaps
+   - Correct code review findings
+   - Re-run validation until clean
+
+**If GUI in scope, additional checks:**
 - All routes return 200
 - Components render in DOM
 - Button handlers registered
 - No console errors on page load
 
-**Deliverable:** `docs/versions/vX.X/uat-automated.md` with inline results
+**Deliverable:** Coverage report + DoD-to-test mapping (included in Status Report)
+
+**Your Role:** Review validation results if issues found
+
+**Time Investment:** 5-15 minutes if review needed; otherwise automated
 
 ---
 
@@ -474,7 +497,9 @@ Because production standards were reviewed in Phase 1 and built incrementally ac
 | Roadmap Complete | Approve Roadmap | You | Versions logical, production-aware |
 | Mission Order Created | Pass to Claude | You | Scope correct, DoD testable |
 | Zen Plan Validated | Approve Plan | ChatGPT | Approach sound, risks identified |
-| Code Complete | Automated UAT Pass | Claude Code | All DoD items pass |
+| Code Complete | Validation Pass | Claude Code + ChatGPT | Tests pass, 80% coverage, DoD mapped |
+| Integration Validated | Code Review Pass | ChatGPT | No hardcoded values, routes registered |
+| Automated UAT Complete | UAT Pass | Claude Code | All DoD items pass |
 | GUI Validated | User UAT Pass | You | Experience acceptable |
 | Version Complete | Mark Complete | You | Status Report accurate |
 | Production Ready | Deploy | You | Standards validated, no blockers |
